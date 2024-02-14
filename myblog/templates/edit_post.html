@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block title %} | Edit Post{% endblock %}
+
+{% block body %}
+
+  <h1>Edit post</h1><hr>
+
+  <form action="{% url 'update_post' post.id %}" method="post">
+    {% csrf_token %}
+    {% for field in form %}
+      <div class="mb-3">
+        {{ field.label_tag }}
+        {{ field }}
+      </div>
+    {% endfor %}
+    <input class="btn btn-primary" type="submit">
+  </form>
+
+  <br>
+
+  <a href="{% url 'post' post.id %}" class="btn btn-secondary">Back</a>
+
+{% endblock %}

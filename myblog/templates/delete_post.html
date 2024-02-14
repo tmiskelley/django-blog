@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block title %} | Delete Post{% endblock %}
+
+{% block body %}
+
+  <h1>Delete post</h1><hr>
+
+  <h2>{{ post.title }}</h2>
+  <p>By: {{ post.author|title }}</p>
+  <p>{{ post.body }}</p>
+
+  <form action="{% url 'delete_post' post.id %}" method="post">
+    {% csrf_token %}
+    <div class="d-flex align-items-center gap-3">
+      <h3 class="mb-0">
+        Are you sure you want to delete <strong>{{ post.title }}</strong>?
+      </h3>
+      <button class="btn btn-danger" type="submit">Confirm delete</button>
+    </div>
+  </form>
+  
+  <br>
+
+  <a href="{% url 'post' post.id %}" class="btn btn-secondary">Cancel</a>
+
+{% endblock %}
