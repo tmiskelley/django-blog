@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block title %} | Login{% endblock %}
+
+{% block body %}
+
+  <h1>Log in</h1><br>
+
+  <form method="post">
+    {% csrf_token %}
+    {% for field in form %}
+      <div class="mb-3">
+        {{ field.label_tag }}
+        {{ field }}
+      </div>
+    {% endfor %}
+    <button class="btn btn-primary">Log in</button>
+  </form>
+
+  <br>
+
+  <p>Not a member? <a href="{% url 'register' %}">Sign up</a></p>
+
+{% endblock %}

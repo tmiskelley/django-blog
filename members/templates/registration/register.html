@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+{% block title %} | Register{% endblock %}
+
+{% block body %}
+
+  <h1>Sign up</h1>
+
+  <form action="{% url 'register' %}" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <button class="btn btn-primary">Sign up</button>
+  </form>
+
+  <br>
+
+  <p>Already a member? <a href="{% url 'login' %}">Log in</a></p>
+
+{% endblock %}

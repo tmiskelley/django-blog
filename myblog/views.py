@@ -2,7 +2,7 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 from django.urls import reverse_lazy
 
 from .models import Post
-from .froms import PostForm
+from .forms import PostForm
 
 class IndexView(ListView):
   model = Post
