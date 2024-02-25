@@ -10,12 +10,14 @@
   </p><hr>
   <p>{{ post.body }}</p>
 
-  <div>
-    <a href="{% url 'update_post' post.id %}" class="btn btn-dark">Edit post</a>
-    <a href="{% url 'delete_post' post.id %}" class="btn btn-danger">Delete</a>
-  </div>
-  
-  <br>
+  {% if user.is_authenticated %}
+    <div>
+      <a href="{% url 'update_post' post.id %}" class="btn btn-dark">Edit post</a>
+      <a href="{% url 'delete_post' post.id %}" class="btn btn-danger">Delete</a>
+    </div>
+
+    <br>
+  {% endif %}
 
   <a href="{% url 'index' %}" class="btn btn-secondary">Back</a>
 
