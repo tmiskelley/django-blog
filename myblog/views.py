@@ -2,7 +2,7 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-from .models import Post
+from .models import Post, Category
 from .forms import PostForm
 
 class IndexView(ListView):
@@ -19,6 +19,12 @@ class CreatePostView(LoginRequiredMixin, CreateView):
   model = Post
   form_class = PostForm
   template_name = "add_post.html"
+
+class AddCategoryView(LoginRequiredMixin, CreateView):
+  raise_exception = True
+  model = Category
+  fields = "__all__"
+  template_name = "add_category.html"
 
 class UpdatePostView(LoginRequiredMixin, UpdateView):
   raise_exception = True
